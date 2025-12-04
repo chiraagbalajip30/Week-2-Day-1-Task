@@ -1,0 +1,390 @@
+/* =========================
+   GLOBAL RESET & HELPERS
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* avoid horizontal scroll from small rounding errors */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* make images and iframes responsive by default */
+img, picture, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   NAVBAR STYLING
+   ========================= */
+/* ========== NAVBAR STYLING (FIXED RESPONSIVE VERSION) ========== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #f5f5f5;
+  width: 100%;
+  flex-wrap: wrap;        /* IMPORTANT: allows wrapping instead of overflow */
+  overflow-x: hidden;     /* last line of defense */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;         /* prevent logo from shrinking weirdly */
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;             /* remove default UL margin */
+  padding: 0;
+  flex-wrap: wrap;       /* allow wrapping */
+  justify-content: center;
+  max-width: 100%;       /* prevent links from going out */
+  overflow-x: hidden;    /* hide accidental 1–2px overflow */
+}
+
+.nav-links li {
+  white-space: nowrap;   /* avoid breaking words */
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  display: block;
+  padding: 6px 0;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* SMALL SCREENS */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .nav-links {
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  display: flex;
+  justify-content: center;  /* center content horizontally */
+  align-items: center;      /* center content vertically */
+  gap: 40px;
+  padding: 60px 40px;
+  background: #ffffff;
+  flex-wrap: wrap; /* allow stacking on small screens */
+  text-align: center; /* center text horizontally */
+}
+
+.hero-text {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem; /* 40px */
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 1.125rem; /* 18px */
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.hero-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.hero-btn:hover {
+  background: #0056b3;
+}
+
+.hero-image {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center image vertically relative to text */
+  min-width: 0;
+}
+
+.hero-image img {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ====================================================
+   RESPONSIVE HERO SECTION
+   ==================================================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+
+  .hero-image img {
+    width: 250px;
+    height: 170px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem; /* 32px */
+  }
+
+  .hero-text p {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* Small phones */
+@media (max-width: 600px) {
+  .hero-image img {
+    width: 200px;
+    height: 140px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem; /* ~25.6px */
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    padding: 8px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+
+
+/* ====================================================
+   3-COLUMN FEATURE SECTION
+   ==================================================== */
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 60px 40px;
+  background: #f8f9fa;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.feature-box {
+  flex: 1;                      /* each box takes equal space */
+  min-width: 280px;             /* prevents shrinking too much */
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.feature-box h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 16px;
+  color: #555;
+}
+
+
+
+/* ====================================================
+   RESPONSIVE DESIGN
+   ==================================================== */
+
+/* TABLETS (2 columns) */
+@media (max-width: 992px) {
+  .features {
+    justify-content: center;
+  }
+
+  .feature-box {
+    flex: 0 0 45%;     /* 2 boxes per row */
+  }
+}
+
+/* MOBILE (1 column) */
+@media (max-width: 600px) {
+  .features {
+    padding: 40px 20px;
+  }
+
+  .feature-box {
+    flex: 0 0 100%;    /* 1 box per row */
+  }
+
+  .feature-box h3 {
+    font-size: 20px;
+  }
+
+  .feature-box p {
+    font-size: 15px;
+  }
+}
+
+
+/* ====================================================
+   TESTIMONIAL BOX (NO IMAGE)
+   ==================================================== */
+
+.testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  background: #fafafa;
+}
+
+.testimonial-box {
+  max-width: 600px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.testimonial-role {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.testimonial-text {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+
+/* ====================================================
+   RESPONSIVE DESIGN
+   ==================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .testimonial {
+    padding: 40px 20px;
+  }
+
+  .testimonial-box {
+    padding: 24px;
+  }
+
+  .testimonial-text {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .testimonial-box {
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .testimonial-name {
+    font-size: 20px;
+  }
+
+  .testimonial-text {
+    font-size: 15px;
+  }
+}
+
+
+/* ====================================================
+   FOOTER LAYOUT
+   ==================================================== */
+
+.footer {
+  display: flex;
+  justify-content: center; /* center the content horizontally */
+  align-items: center;
+  padding: 30px 40px;
+  background: #222;
+  color: #fff;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer-left h3 {
+  font-size: 22px;
+  margin: 0 0 6px 0;
+}
+
+.footer-left p {
+  font-size: 14px;
+  margin: 0;
+  color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 16px;
+  }
+
+  .footer-left h3 {
+    font-size: 20px;
+  }
+}
